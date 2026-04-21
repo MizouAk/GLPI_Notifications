@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GLPI Notification Console — light enterprise design system
+   ServiceNow / Atlassian inspired. All colors in HSL. */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 210 25% 98%;
+    --surface: 0 0% 100%;
+    --surface-muted: 215 20% 96%;
+    --foreground: 222 25% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 25% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 25% 14%;
+
+    /* Brand — enterprise blue */
+    --primary: 218 92% 42%;
+    --primary-hover: 218 92% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 25% 94%;
+    --secondary-foreground: 222 25% 18%;
+
+    --muted: 215 20% 96%;
+    --muted-foreground: 218 12% 45%;
+
+    --accent: 218 95% 96%;
+    --accent-foreground: 218 92% 32%;
+
+    /* Status semantics */
+    --success: 152 65% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-soft: 152 60% 94%;
+
+    --warning: 32 95% 48%;
+    --warning-foreground: 0 0% 100%;
+    --warning-soft: 38 100% 94%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 85% 96%;
+
+    --info: 200 90% 42%;
+    --info-soft: 200 85% 95%;
+
+    /* Priority */
+    --priority-low: 152 50% 40%;
+    --priority-medium: 200 85% 42%;
+    --priority-high: 32 92% 48%;
+    --priority-critical: 0 75% 50%;
+
+    --border: 215 20% 89%;
+    --border-strong: 215 20% 80%;
+    --input: 215 20% 89%;
+    --ring: 218 92% 42%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 222 30% 14%;
+    --sidebar-foreground: 215 25% 88%;
+    --sidebar-primary: 218 92% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 28% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 222 25% 22%;
+    --sidebar-ring: 218 92% 55%;
+
+    /* Elevation */
+    --shadow-sm: 0 1px 2px 0 hsl(222 25% 14% / 0.04);
+    --shadow-md: 0 4px 12px -2px hsl(222 25% 14% / 0.08), 0 2px 4px -2px hsl(222 25% 14% / 0.06);
+    --shadow-lg: 0 12px 32px -8px hsl(222 25% 14% / 0.16);
+    --shadow-popover: 0 8px 24px -4px hsl(222 25% 14% / 0.12), 0 0 0 1px hsl(215 20% 89%);
+  }
+
+  .dark {
+    --background: 222 25% 8%;
+    --surface: 222 25% 11%;
+    --surface-muted: 222 22% 14%;
+    --foreground: 210 25% 96%;
+    --card: 222 25% 11%;
+    --card-foreground: 210 25% 96%;
+    --popover: 222 25% 11%;
+    --popover-foreground: 210 25% 96%;
+    --primary: 218 92% 60%;
+    --primary-hover: 218 92% 66%;
+    --primary-foreground: 222 25% 8%;
+    --secondary: 222 20% 18%;
+    --secondary-foreground: 210 25% 96%;
+    --muted: 222 22% 14%;
+    --muted-foreground: 215 15% 60%;
+    --accent: 218 60% 18%;
+    --accent-foreground: 218 92% 80%;
+    --border: 222 20% 20%;
+    --border-strong: 222 18% 28%;
+    --input: 222 20% 20%;
+    --ring: 218 92% 60%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply bg-card border border-border rounded-lg;
+    box-shadow: var(--shadow-sm);
+  }
+  .data-row {
+    @apply border-b border-border last:border-b-0 hover:bg-muted/60 transition-colors;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  .text-eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--border-strong));
+    border-radius: 999px;
+  }
+}

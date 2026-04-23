@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/widgets/app_shell.dart';
-import 'package:mobile_app/theme/app_theme.dart';
+import 'package:mobile_app/helpdesk/design_system/app_theme.dart';
+import 'package:mobile_app/helpdesk/screens/app_shell_screen.dart';
 
 void main() {
-  runApp(const AlertBuddyApp());
+  runApp(const HelpdeskApp());
 }
 
-class AlertBuddyApp extends StatelessWidget {
-  const AlertBuddyApp({super.key});
+class HelpdeskApp extends StatefulWidget {
+  const HelpdeskApp({super.key});
+
+  @override
+  State<HelpdeskApp> createState() => _HelpdeskAppState();
+}
+
+class _HelpdeskAppState extends State<HelpdeskApp> {
+  ThemeMode _themeMode = ThemeMode.light;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Alert Buddy',
-      theme: AppTheme.light,
-      home: const AppShell(),
+      title: 'GLPI Helpdesk Mobile',
+      theme: HelpdeskTheme.light,
+      darkTheme: HelpdeskTheme.dark,
+      themeMode: _themeMode,
+      home: AppShellScreen(
+        onThemeChanged: (isDark) {
+          setState(() => _themeMode = isDark ? ThemeMode.dark : ThemeMode.light);
+        },
+      ),
     );
   }
 }

@@ -11,7 +11,7 @@ import 'package:mobile_app/main.dart';
 
 void main() {
   testWidgets('App shows login after splash', (WidgetTester tester) async {
-    await tester.pumpWidget(const GlpiApp());
+    await tester.pumpWidget(const HelpdeskApp());
     await tester.pump(const Duration(seconds: 3));
 
     expect(find.text('Sign in'), findsOneWidget);
